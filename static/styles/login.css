@@ -28,8 +28,9 @@ input {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    border-width: 0px;
+    border-width: 5px;
     text-align: center;
+    box-shadow: 15px 15px;
 
 }
 button {
@@ -43,4 +44,5 @@ button {
     height: auto;
     padding: 2%;
     border-radius: 5px;
+    box-shadow: 15px 15px white;
 }
