@@ -1,0 +1,46 @@
+.maincontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+    background-color: #c3c4c7;
+    padding: 5%;
+}
+.mainheading {
+    font-size: 40px;
+}
+.facebooktext {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5%;
+    width: 20%;
+    text-align: left;
+    
+}
+
+input {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 5%;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+
+}
+button {
+    width: 100%;
+    margin-bottom: 5%;
+}
+.login-container {
+    width: 30%;
+    text-align: center;
+    background-color:white;
+    height: auto;
+    padding: 2%;
+    border-radius: 5px;
+}
