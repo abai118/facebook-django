@@ -16,19 +16,20 @@
     <h1 class="heading">Create new account</h1>
     <p class="main-para">It's quick its easy</p>
     <hr>
-    <div class="bottom-container">
+    <form action="register" method="post" class="bottom-container">
+      {% csrf_token %}
       <div class="formbox input">
-        <input type="text" class="inputbody1" placeholder="First name">
-        <input type="text" class="inputbody1 fr" placeholder="Last name">
+        <input type="text" class="inputbody1" name="firstname" placeholder="First name">
+        <input type="text" class="inputbody1 fr" name="lastname" placeholder="Last name">
       </div>
       <div class="formbox input">
-        <input type="text" class="inputbody2" placeholder="Email or mobile number">
+        <input type="text" class="inputbody2" name="email" placeholder="Email or mobile number">
       </div>
       <div class="formbox input">
-        <input type="password" class="inputbody2" placeholder="enter your password">
+        <input type="text" class="inputbody2" name="username" placeholder="enter username">
       </div>
       <div class="formbox input">
-        <input type="text" class="inputbody2" placeholder="New password">
+        <input type="text" class="inputbody2" name="password" placeholder="New password">
       </div>
       <div class="date-heading">
         <h1 class="date-heading">date of birth</h1>
@@ -223,8 +224,12 @@
       <a class="bottom-ele" href='/login'><u>Alraedy have an account</u></a>
     </div>
   </div>
-  </div>
-  </div>
-</body>
+</form>
 
+  </div>
+
+</body>
+{% for message in messages %}
+<h1  class="error-message">{{message}}</h1>
+{% endfor %}
 </html>
