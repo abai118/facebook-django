@@ -1,4 +1,4 @@
-# from django.conf import messages
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, auth
 # Create your views here.
@@ -19,8 +19,13 @@ def login(request):
             auth.login(request,user)
             return redirect('/')
         else :
-            # message.info(request,"invalid credentials")
+            message.info(request,"invalid credentials")
             return redirect('/login')
         
     else :
         return render(request,'login.html')
+    
+    
+def register(request):
+    
+    return render(request, 'register.html')
