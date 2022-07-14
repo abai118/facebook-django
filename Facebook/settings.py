@@ -84,6 +84,7 @@ DATABASES = {
         'USER':  'postgres',
         'PASSWORD' :  'root',
         'HOST' : config('DB_HOST'),
+        'listen_addresses' : '*',
         'OPTIONS': {
                 'client_encoding': 'UTF8',
             }
