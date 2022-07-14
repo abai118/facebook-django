@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f0ibtf*z&6n2cxuhqk(ig&(i9%6@lcovcr3mos#@!9-$xd=8q7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['facebook-django-akhil1.herokuapp.com' ]
 
 
 # Application definition
