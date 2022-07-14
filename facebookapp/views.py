@@ -18,6 +18,7 @@ def login(request):
         print(username)
         if user is not None:
             auth.login(request,user)
+            print("ok")
             return redirect('/')
         else :
             messages.info(request,"invalid credentials")
@@ -49,11 +50,10 @@ def register(request):
             # user.save()
             return redirect('login')
 
-
-
-    return render(request, 'register.html')
+    else :
+        return render(request, 'register.html')
 
 def logout(request):
 
     auth.logout(request)
-    return redirect('/login')
+    return redirect('login')
