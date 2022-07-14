@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-f0ibtf*z&6n2cxuhqk(ig&(i9%6@lcovcr3mos#@!9-$xd=8q7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['facebook-django-akhil1.herokuapp.com' ]
+ALLOWED_HOSTS = ['facebook-django-akhil1.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -84,6 +84,9 @@ DATABASES = {
         'USER':  'postgres',
         'PASSWORD' :  'root',
         'HOST' : 'localhost',
+        'OPTIONS': {
+                'client_encoding': 'UTF8',
+            }
 
     }
 }
