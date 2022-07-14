@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f0ibtf*z&6n2cxuhqk(ig&(i9%6@lcovcr3mos#@!9-$xd=8q7'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['facebook-django-akhil2.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['facebook-django-akhil.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'facebook',
         'USER':  'postgres',
         'PASSWORD' :  'root',
-        'HOST' : 'localhost',
+        'HOST' : config('DB_HOST'),
         'OPTIONS': {
                 'client_encoding': 'UTF8',
             }
