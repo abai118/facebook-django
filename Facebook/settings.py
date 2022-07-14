@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-
-from numpy import True_
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f0ibtf*z&6n2cxuhqk(ig&(i9%6@lcovcr3mos#@!9-$xd=8q7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True_
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
