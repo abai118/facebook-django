@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+
+from numpy import True_
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-f0ibtf*z&6n2cxuhqk(ig&(i9%6@lcovcr3mos#@!9-$xd=8q7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',cast=bool)
+DEBUG = True_
 
 ALLOWED_HOSTS = []
 
@@ -80,10 +82,10 @@ WSGI_APPLICATION = 'Facebook.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER':  config('DB_USER'),
-        'PASSWORD' :  config('DB_PASSWORD'),
-        'HOST' : config('DB_HOST'),
+        'NAME': 'facebook',
+        'USER':  'postgres',
+        'PASSWORD' :  'root',
+        'HOST' : 'localhost',
 
     }
 }
