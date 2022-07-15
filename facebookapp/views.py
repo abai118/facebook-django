@@ -6,8 +6,10 @@ from django.contrib.auth.models import User, auth
 
 
 def index(request):
-
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        return render(request, 'index.html')
+    else :
+        return redirect('login')
 
 
 def login(request):
@@ -48,12 +50,37 @@ def register(request):
                                             password=password, email=email, first_name= firstname, last_name = lastname)
             print(user)
             # user.save()
-            return redirect('login')
+            return redirect('updateProfile')
 
     else :
         return render(request, 'register.html')
 
 def logout(request):
+    
 
     auth.logout(request)
     return redirect('login')
+
+def updateProfile(request):
+    if request.user.is_authenticated:
+        return render(request,'profileUpload.html')
+    else :
+        return redirect('login')
+    
+    
+
+def profile(request):
+    if request.user.is_authenticated:
+        return render(request,'profile.html')
+    else :
+        return redirect('login')
+    
+
+def friends(request):
+    if request.user.is_authenticated:
+        return render(request, 'friends.html')
+    else :
+        return redirect('login')
+    
+def notfound(request):
+    return render(request, 'index.html')

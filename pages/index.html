@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  {% if user.is_authenticated %}
+ 
 
   <div class="header">
     <div class="header__left">
@@ -28,19 +28,19 @@
 
     <div class="header__middle">
       <div class="header__option active">
-        <span class="material-icons"> home </span>
+        <a class="anc" href="/"><span class="material-icons"> home </span></a>
       </div>
       <div class="header__option">
-        <span class="material-icons"> friends </span>
+        <a href="friends"> <span class="material-icons"> friends </span></a>
       </div>
       <div class="header__option">
-        <span class="material-icons"> profile </span>
+        <a href="profile"> <span class="material-icons"> profile </span></a>
       </div>
 
       <div class="header__option">
-        <span class="material-icons"> <a class="logout" href="logout"> logout</a></span>
+        <a href="logout"> <span class="material-icons"> logout</span></a>
       </div>
-      
+
     </div>
 
     <div class="header__right">
@@ -364,15 +364,6 @@
   <!-- main body ends -->
 
 
-  </h1>
-  {% else %}
-  <div class="loginbutton">
-    <h1>PLEASE
-      <a href="login">login</a>
-      TO YOUR ACCOUNT
-    </h1>
-  </div>
-  {% endif %}
 </body>
 
 </html>

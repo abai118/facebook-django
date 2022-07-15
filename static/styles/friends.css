@@ -20,10 +20,7 @@
   .header__left img {
     height: 40px;
   }
-  .logout {
-    text-decoration: none;
-    color: gray ;
-  }
+
   
   .user__avatar {
     border-radius: 50%;
@@ -151,11 +148,12 @@
     color: #2e81f4;
   }
   .friends-list {
-    border: 1px solid black;
+   
     margin-top: 20px;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
+    width: 100%;
   }
   /* story */
   .story {
@@ -213,10 +211,7 @@
     padding: 25px 10px;
     flex: 0.33;
   }
-  .friends-list {
-    border: 1px solid black;
-    border-radius: 10px;
-  }
+  
   /* message sender */
   
   .messageSender {
@@ -356,6 +351,7 @@
     text-decoration: none;
     color: gray ;
   }
+  
   @media (max-width: 768px) {
     .sidebar {
       display: none;
@@ -372,10 +368,15 @@
     .header__info {
       display: none;
     }
-  
-    .widgets {
-      display: none;
-    }
+
+   .notnone {
+    display: flex;
+    width: 100%;
+   }
+   .friends-list {
+    width: 100%;
+    
+   }
   
     .feed {
       margin-top: 20px;

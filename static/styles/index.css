@@ -6,10 +6,7 @@
   .header__left img {
     height: 40px;
   }
-  .logout {
-    text-decoration: none;
-    color: gray ;
-  }
+
   
   .user__avatar {
     border-radius: 50%;
@@ -336,7 +333,10 @@
   .friends-title {
     color: #2e81f4;
   }
-  
+  a {
+    text-decoration: none;
+    color: gray ;
+  }
   @media (max-width: 768px) {
     .sidebar {
       display: none;
