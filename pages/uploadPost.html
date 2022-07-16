@@ -59,8 +59,7 @@
         </div>
       </div>
     </div>
-
-    <h1 class="text-center mt-5">Create Profile</h1>
+    <h1 class="text-center">Create Profile</h1>
     <div class="container">
       <form
       action=""
@@ -69,41 +68,30 @@
       >
         {% csrf_token %}
         
-        <div class="mb-3">
-          <label for="nickname" class="form-label"
-            ><b>Nickname</b></label
-          >
-          
-          <input
-            class="form-control"
-            id="nicname"
-           
-            name="nickname"
-          />
 
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"
-            ><b>Bio</b></label
-          >
+          <label for="post" class="form-label"
+            ></label>
           
           <textarea
             class="form-control"
-            id="exampleFormControlTextarea1"
+            id="post"
             rows="3"
-            name="bio"
+            name="desc"
+            placeholder="whats in your mind"
           ></textarea>
         </div>
         
         <div>
-          <label for="formFileLg" class="form-label"><b>Profile Pic</b></label>
+          <label for="formFileLg" class="form-label"><b>Choose a file</b></label>
           <input
             class="form-control form-control-lg"
             id="formFileLg"
             type="file"
-            name="profilepic"
+            name="file"
           />
         </div>
-        <button type="submit" class="my-2 btn btn-primary">update</button>
+        <button type="submit" class="my-2 btn btn-primary">Post</button>
       </form>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
