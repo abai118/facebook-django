@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class profilemodel(models.Model):
-    image = models.ImageField(upload_to="media/ProfilePics")
+    image = models.ImageField(upload_to="ProfilePics")
     bio = models.CharField(max_length=200)
     nickname=models.CharField(max_length=100)
     followers = models.ManyToManyField(User,related_name='followers',blank=True,null=True)
