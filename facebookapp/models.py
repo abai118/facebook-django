@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class profilemodel(models.Model):
+class Profilemodel(models.Model):
     image = models.ImageField(upload_to="ProfilePics")
     bio = models.CharField(max_length=200)
     nickname=models.CharField(max_length=100)
@@ -17,7 +17,7 @@ class profilemodel(models.Model):
 class Post(models.Model):
     postImg = models.ImageField(upload_to="posts",blank=True, null=True)
     text = models.CharField(max_length=200)
-    profileuser = models.ForeignKey(profilemodel,related_name="profile",on_delete=models.CASCADE)
+    profileuser = models.ForeignKey(Profilemodel,related_name="profile",on_delete=models.CASCADE)
     likes = models.ManyToManyField(User,related_name="likes",blank=True,null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True, blank=True)

@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,auth
-from .models import profilemodel,Post
-from django.contrib.auth import login ,logout,authenticate
+from .models import Profilemodel,Post
+from django.contrib.auth import login ,authenticate
 # Create your views here.
 
 
@@ -74,13 +74,12 @@ def updateProfile(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             bio = request.POST['bio']
-            profilepic = request.FILES['profilepic']
+            profilepic = request.FILES['profilepic'].read()
             nickname = request.POST['nickname']
-            profile = profilemodel.objects.create(user=request.user,image=profilepic,bio=bio,nickname=nickname)
-            # profile.save()
+            profile = Profilemodel.objects.create(user=request.user,image=profilepic,bio=bio,nickname=nickname)
             return redirect('profile')
-        
-        return render(request,'profileUpload.html')
+        else:
+            return render(request,'profileUpload.html')
     else :
         return redirect('login')
     
@@ -88,7 +87,7 @@ def updateProfile(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        profile = profilemodel.objects.get(user=request.user)
+        profile = Profilemodel.objects.get(user=request.user)
         posts = Post.objects.filter(profileuser=profile)
         friends = profile.following
         print(friends)
@@ -99,9 +98,9 @@ def profile(request):
 
 def friends(request):
     if request.user.is_authenticated:
-        profile = profilemodel.objects.all()
-        print(profile)
-        return render(request, 'friends.html')
+        profile = Profilemodel.objects.get(user=request.user)
+        friends = profile.followers
+        return render(request, 'friends.html',{'friends' : friends})
     else :
         return redirect('login')
     
@@ -112,12 +111,9 @@ def notfound(request):
 def updatePost(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
-            profile = profilemodel.objects.get(user=request.user)
-            
-            
-            
+            profile = Profilemodel.objects.get(user=request.user)
             postdesc = request.POST['desc']
-            file = request.FILE['file']
+            file = request.FILE['file'].read()
             posts = Post.objects.create(postImg=file,profileuser=profile,user=request.user,text=postdesc)
             
             return render(request,'profile.html')
