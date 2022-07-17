@@ -10,7 +10,7 @@ def index(request):
     if request.user.is_authenticated:
         posts = Post.objects.filter(profileuser__followers=request.user)
         profile = Profilemodel.objects.get(user=request.user)
-        friends = [profile.followers]
+        friends = profile.followers
         return render(request, 'index.html',{'post':posts,'friends':friends})
     else :
         return redirect('login')
@@ -89,7 +89,7 @@ def profile(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
         posts = Post.objects.filter(profileuser=profile).order_by('-time')
-        friends = [profile.followers]
+        friends = profile.followers
         
         return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
