@@ -15,7 +15,7 @@ class Profilemodel(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,related_name="user")
 
 class Post(models.Model):
-    postImg = models.ImageField(upload_to="posts",blank=True, null=True)
+    postImg = models.ImageField(upload_to="posts",blank=True,null=True)
     text = models.CharField(max_length=200)
     profileuser = models.ForeignKey(Profilemodel,related_name="profile",on_delete=models.CASCADE)
     likes = models.ManyToManyField(User,related_name="likes",blank=True,null=True)

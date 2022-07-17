@@ -9,9 +9,9 @@ from django.contrib.auth import login ,authenticate
 def index(request):
     if request.user.is_authenticated:
         posts = Post.objects.filter(profileuser__followers=request.user)
-        friends = User.objects.filter()
-        print(posts)
-        return render(request, 'index.html',{'post':posts})
+        profile = Profilemodel.objects.get(user=request.user)
+        friends = [profile.followers]
+        return render(request, 'index.html',{'post':posts,'friends':friends})
     else :
         return redirect('login')
 
@@ -74,7 +74,7 @@ def updateProfile(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             bio = request.POST['bio']
-            profilepic = request.FILES['profilepic'].read()
+            profilepic = request.FILES['profilepic']
             nickname = request.POST['nickname']
             profile = Profilemodel.objects.create(user=request.user,image=profilepic,bio=bio,nickname=nickname)
             return redirect('profile')
@@ -88,10 +88,10 @@ def updateProfile(request):
 def profile(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
-        posts = Post.objects.filter(profileuser=profile)
-        friends = profile.following
-        print(friends)
-        return render(request,'profile.html',{'profiles': profile,'posts':posts})
+        posts = Post.objects.filter(profileuser=profile).order_by('-time')
+        friends = [profile.followers]
+        
+        return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
         return redirect('login')
     
@@ -99,7 +99,8 @@ def profile(request):
 def friends(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
-        friends = profile.followers
+        friends = [profile.followers]
+        print(friends,"ok")
         return render(request, 'friends.html',{'friends' : friends})
     else :
         return redirect('login')
@@ -113,7 +114,8 @@ def updatePost(request):
         if request.method == 'POST':
             profile = Profilemodel.objects.get(user=request.user)
             postdesc = request.POST['desc']
-            file = request.FILE['file'].read()
+            file = request.FILES['image']
+            print(file)
             posts = Post.objects.create(postImg=file,profileuser=profile,user=request.user,text=postdesc)
             
             return render(request,'profile.html')
