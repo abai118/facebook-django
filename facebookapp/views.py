@@ -50,11 +50,11 @@ def register(request):
             messages.info(request, "email taken")
             return redirect('register')
         else :
-            userA = User.objects.create_user(username=username,
+            user = User.objects.create_user(username=username,
                                             password=password, email=email, first_name= firstname, last_name = lastname)
-            print(userA)
-            userA.save()
-            if userA :
+            print(user)
+            user.save()
+            if user :
                 user = authenticate(username=username,password=password)
                 if user is not None:
                     login(request, user)
@@ -89,7 +89,7 @@ def profile(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
         posts = Post.objects.filter(profileuser=profile).order_by('-time')
-        
+        friends = profile.followers
         
         return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
