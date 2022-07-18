@@ -1,14 +1,17 @@
 # facebook-django
 
 ## Description
-in this we have created facebook app clone which is having the following designs 
+In this we have created facebook app clone which is having the following designs 
 
-you can view this app in the link
+You can view this app in the link
 [facebookCloneapp-django](https://facebook-django-akhil.herokuapp.com/)
 
-to view the code for github tou can view in this [github link](https://github.com/abai118/facebook-django)
+To view the code for github tou can view in this [github link](https://github.com/abai118/facebook-django)
 
-### user stories
+
+User Stories, User Persona and Database Schema Design are given below 
+
+### User Stories
 
 As a user Facebook clone app have following features:
 - As a logged in user, i should be able to create a post.
@@ -24,7 +27,7 @@ As a user Facebook clone app have following features:
 
 ### Database Schema Design
 
-1. Userauth table
+1. Userauth Table
 
    - Userid (primary key)
    - Username
@@ -33,36 +36,36 @@ As a user Facebook clone app have following features:
    - Last name
    - E mail
 
-2. profile model
-   - user
-   - bio
-   - profile pic
-   - friends
+2. Profile Model
+   - User
+   - Bio
+   - Profile pic
+   - Friends
   
-3. post table
-   - user
-   - postimage(we would leave it as a blank)
-   - post text
-   - likes
-   - time
+3. Post Table
+   - User
+   - Postimage(we would leave it as a blank)
+   - Post text
+   - Likes
+   - Time
 
-4. comment
-   - user
-   - post id
-   - comment text
+4. Comment
+   - User
+   - Post id
+   - Comment text
 
 
-### user persona
+### User Persona
 Person 1
 
-1. User details
+1. User Details
    - Name : Akhil
    - Age: 28
    - Work: Software Developper
    - Family: Single
    - Location: Bengalore
 
-2. user hobies
+2. User Hobies
    - Travelling to new places
    - Adopting new skills that are required
 
@@ -71,7 +74,7 @@ Person 1
    - Knowing about people intrestes
    - Updating according to trends
 
-4. frequently used apps
+4. Frequently Used Apps
    - Instagram
    - Youtube
    - Pintrest
@@ -80,14 +83,14 @@ Person 1
 
 Person2
 
-1. User details
+1. User Details
    - Name : Satya
    - Age: 28
    - Work: Season Business
    - Family: Single
    - Location: Vijayawada
 
-2. user hobies
+2. User Hobies
    - Travelling to temples
    - spending time with friends
 
@@ -95,6 +98,6 @@ Person2
    - Finding new people with same interests
    - Knowing about people interests
   
-4. frequently used apps
+4. Frequently Used Apps
    - Instagram
    - Youtube
