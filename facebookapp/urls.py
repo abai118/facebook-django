@@ -12,7 +12,8 @@ urlpatterns = [
     path('profile',views.profile,name='profile'),
     path('updateProfile',views.updateProfile,name='updateProfile'),
     path('friends',views.friends,name='friends'),
-    path('updatePost',views.updatePost,name='updatePost')
+    path('updatePost',views.updatePost,name='updatePost'),
+    path('likePost/<int:id>',views.likePost,name='likePost'),
    
     
 

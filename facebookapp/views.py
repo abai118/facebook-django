@@ -125,3 +125,12 @@ def updatePost(request):
     else:
         return redirect('login')
             
+            
+def likePost(request,id):
+    print(request.method)
+    if request.method == 'POST':
+        postid = id
+        post = Post.objects.get(id=postid)
+        post.likes.add(request.user)
+        return redirect("/")
+    

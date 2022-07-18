@@ -203,11 +203,14 @@
         </div>
 
         <div class="post__options">
-          <div class="post__option">
-            <span class="material-icons"> Like </span>
-
+          <form action="likePost/{{post.id}}" method="POST" >
+          {% csrf_token %}
+            <div class="post__option">
+         <button type="submit" class="material-icons like"> Like </button> 
+           
+            
           </div>
-
+        </form>
           <div class="post__option">
             <span class="material-icons"> Comment </span>
 
@@ -219,6 +222,9 @@
           </div>
         </div>
       </div>
+      <div class="likes__cont">
+      <p><b>{{post.likes.count}} likes</b></p>
+    </div>
       <!-- post ends -->
       {% else %}
       <!-- post  -->
@@ -238,11 +244,14 @@
         </div>
 
         <div class="post__options">
-          <div class="post__option">
-            <span class="material-icons"> Like </span>
-
-          </div>
-
+          <form action="likePost/{{post.id}}" method="POST" >
+            {% csrf_token %}
+              <div class="post__option">
+              <button type="submit" class="material-icons"> Like </button> 
+             
+              <p>{{post.likes.count}}</p>
+            </div>
+          </form>
           <div class="post__option">
             <span class="material-icons"> Comment </span>
 
@@ -254,7 +263,9 @@
           </div>
         </div>
       </div>
-     
+      <div class="likes__cont">
+        <p><b>{{post.likes.count}} likes</b></p>
+      </div>
       <!-- post ends -->
       {% endif%}
       {% endfor %}

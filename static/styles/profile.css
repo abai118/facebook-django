@@ -10,7 +10,7 @@
   .header__left img {
     height: 40px;
   }
-
+ 
   
   .user__avatar {
     border-radius: 50%;
@@ -461,6 +461,15 @@
   }
   .friends-title {
     color: #2e81f4;
+  }
+  .like {
+    border: 1px solid transparent;
+    background-color: transparent;
+  }
+  .likes__cont {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   a {
     text-decoration: none;

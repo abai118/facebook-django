@@ -6,7 +6,9 @@
   .header__left img {
     height: 40px;
   }
-
+  .like {
+    border: none;
+  }
   
   .user__avatar {
     border-radius: 50%;
