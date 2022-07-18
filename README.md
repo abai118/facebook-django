@@ -1,17 +1,17 @@
 # facebook-django
 
 ## Description
-In this we have created facebook app clone which is having the following designs 
+- In this we have created facebook app clone which is having the following designs 
 
-You can view this app in the link
+- You can view this app in the link
 [facebookCloneapp-django](https://facebook-django-akhil.herokuapp.com/)
 
-To view the code for github tou can view in this [github link](https://github.com/abai118/facebook-django)
+- To view the code for github tou can view in this [github link](https://github.com/abai118/facebook-django)
 
 
 User Stories, User Persona and Database Schema Design are given below 
 
-### User Stories
+### 1. User Stories
 
 As a user Facebook clone app have following features:
 - As a logged in user, i should be able to create a post.
@@ -25,37 +25,37 @@ As a user Facebook clone app have following features:
 - As a logged in user, i should be able to edit my friend requests.
 - As a logged in user, i should be able to search for friends.
 
-### Database Schema Design
+### 2. Database Schema Design
 
-1. Userauth Table
+  1. Userauth Table
 
-   - Userid (primary key)
-   - Username
-   - Password
-   - First name
-   - Last name
-   - E mail
+     - Userid (primary key)
+     - Username
+     - Password
+     - First name
+     - Last name
+     - E mail
 
-2. Profile Model
-   - User
-   - Bio
-   - Profile pic
-   - Friends
-  
-3. Post Table
-   - User
-   - Postimage(we would leave it as a blank)
-   - Post text
-   - Likes
-   - Time
+  2. Profile Model
+     - User
+     - Bio
+     - Profile pic
+     - Friends
+    
+  3. Post Table
+     - User
+     - Postimage(we would leave it as a blank)
+     - Post text
+     - Likes
+     - Time
 
-4. Comment
-   - User
-   - Post id
-   - Comment text
+  4. Comment
+     - User
+     - Post id
+     - Comment text
 
 
-### User Persona
+### 3. User Persona
 Person 1
 
 1. User Details
