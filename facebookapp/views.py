@@ -137,12 +137,13 @@ def likePost(request,id):
         return redirect("/")
 
 def search(request):
-    sterm = request.GET('search')
-
-    if search == None :
-        return redirect('/')
-    else:
+    if request.method == 'POST':
+        sterm = request.POST('search')
+        # if search == None :
+        #     return redirect('/')
+        # else:
         user = Profilemodel.objects.filter(user__username__icontains=sterm)
 
-
-        return render(request,'search.html')
+        return render(request,'search.html',{'all':user})
+    else :
+        return redirect('/')
