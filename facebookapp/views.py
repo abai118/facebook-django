@@ -11,7 +11,10 @@ def index(request):
         posts = Post.objects.filter(profileuser__followers=request.user)
         profile = Profilemodel.objects.get(user=request.user)
         friends = [profile.followers]
-        return render(request, 'index.html',{'post':posts,'friends':friends})
+        # print(friends)
+        # print(profile)
+       
+        return render(request, 'index.html',{'posts':posts,'friends':friends})
     else :
         return redirect('login')
 
@@ -21,7 +24,7 @@ def login1(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username,password=password)
-        print(username)
+        # print(username)
         if user is not None:
             auth.login(request,user)
             print("ok")
@@ -52,7 +55,7 @@ def register(request):
         else :
             user = User.objects.create_user(username=username,
                                             password=password, email=email, first_name= firstname, last_name = lastname)
-            print(user)
+            # print(user)
             user.save()
             if user :
                 user = authenticate(username=username,password=password)
@@ -101,8 +104,8 @@ def friends(request):
         profile = Profilemodel.objects.get(user=request.user)
         friends = [profile.followers]
         all=Profilemodel.objects.all()
-        print(friends,"ok")
-        print(all)
+        # print(friends,"ok")
+        # print(all)
         return render(request, 'friends.html',{'friends' : friends, 'all':all})
     else :
         return redirect('login')
@@ -117,7 +120,7 @@ def updatePost(request):
             profile = Profilemodel.objects.get(user=request.user)
             postdesc = request.POST['desc']
             file = request.FILES['image']
-            print(file)
+            # print(file)
             posts = Post.objects.create(postImg=file,profileuser=profile,user=request.user,text=postdesc)
 
             return render(request,'profile.html')
@@ -138,7 +141,7 @@ def likePost(request,id):
 
 def search(request):
     if request.method == 'GET':
-        search = request.GET['search']
+        search = request.GET['search1']
         
         
         user = Profilemodel.objects.filter(user__username__icontains=search)
@@ -146,3 +149,22 @@ def search(request):
         return render(request,'search.html',{'all':user})
     else :
         return redirect('/')
+    
+    
+def follow(request):
+    if request.method == 'POST':
+       
+        userfollow = request.POST['user']
+        user = User.objects.get(username=userfollow)
+        activeuser = User.objects.get(username=request.user)
+        followingmodel = Profilemodel.objects.get(user=activeuser)
+        
+        followmodel = Profilemodel.objects.get(user=user)
+        
+        followingmodel.following.add(user)
+        followmodel.followers.add(request.user)
+        
+        return redirect('/')
+    else :
+        
+        return redirect("friends")

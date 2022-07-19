@@ -25,7 +25,7 @@
       <div class="header__input">
         <form action="search" method="get">
           {% csrf_token %}
-        <input type="text" placeholder="Search Facebook" name="search"/>
+        <input type="text" placeholder="Search Facebook" name="search1"/>
         <button class="search_button" type="submit">  <img class="searchimage" src="https://cdn-icons-png.flaticon.com/512/61/61088.png"></button>
       </form>
       </div>
@@ -242,7 +242,7 @@
         <div class="post__option">
         <button type="submit" class="material-icons like"> Like <a><b>{{post.likes.count}}</b></a></button> 
        
-        <p>{{post.likes.count}}</p>
+       
       </div>
     </form>
 
