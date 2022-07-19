@@ -23,7 +23,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png"
         alt="" />
       <div class="header__input">
-        <form action="search" method="post">
+        <form action="search" method="get">
           {% csrf_token %}
         <input type="text" placeholder="Search Facebook" name="search"/>
         <button class="search_button" type="submit">  <img class="searchimage" src="https://cdn-icons-png.flaticon.com/512/61/61088.png"></button>

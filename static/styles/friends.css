@@ -365,6 +365,13 @@
   align-items: center;
   width: 100%;
 }
+.username_cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
   @media (max-width: 768px) {
     .sidebar {
       display: none;
