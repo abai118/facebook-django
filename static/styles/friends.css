@@ -351,7 +351,20 @@
     text-decoration: none;
     color: gray ;
   }
-  
+  .search_button {
+    border: 1px solid transparent;
+ }
+ .searchimage {
+  height: 10%;
+  width: 30%;
+ }
+.suggsetions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
   @media (max-width: 768px) {
     .sidebar {
       display: none;

@@ -14,9 +14,7 @@ urlpatterns = [
     path('friends',views.friends,name='friends'),
     path('updatePost',views.updatePost,name='updatePost'),
     path('likePost/<int:id>',views.likePost,name='likePost'),
-   
-    
-
+    path('search',views.search,name='search'),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

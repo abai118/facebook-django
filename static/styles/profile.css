@@ -470,11 +470,20 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    padding-left: 20px;
+    color: #2e81f4;
   }
   a {
     text-decoration: none;
     color: gray ;
   }
+.search_button {
+    border: 1px solid transparent;
+ }
+ .searchimage {
+  height: 10%;
+  width: 30%;
+ }
   @media (max-width: 768px) {
     .sidebar {
       display: none;

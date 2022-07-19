@@ -65,7 +65,7 @@ def register(request):
         return render(request, 'register.html')
 
 def logout(request):
-    
+
 
     auth.logout(request)
     return redirect('login')
@@ -82,29 +82,31 @@ def updateProfile(request):
             return render(request,'profileUpload.html')
     else :
         return redirect('login')
-    
-    
+
+
 
 def profile(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
         posts = Post.objects.filter(profileuser=profile).order_by('-time')
         friends = profile.followers
-        
+
         return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
         return redirect('login')
-    
+
 
 def friends(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
         friends = [profile.followers]
+        all=Profilemodel.objects.all()
         print(friends,"ok")
-        return render(request, 'friends.html',{'friends' : friends})
+        print(all)
+        return render(request, 'friends.html',{'friends' : friends, 'all':all})
     else :
         return redirect('login')
-    
+
 def notfound(request):
     return render(request, 'index.html')
 
@@ -117,15 +119,15 @@ def updatePost(request):
             file = request.FILES['image']
             print(file)
             posts = Post.objects.create(postImg=file,profileuser=profile,user=request.user,text=postdesc)
-            
+
             return render(request,'profile.html')
         else:
             messages.info(request, "something went wrong")
             return render(request,'uploadPost.html')
     else:
         return redirect('login')
-            
-            
+
+
 def likePost(request,id):
     print(request.method)
     if request.method == 'POST':
@@ -133,4 +135,14 @@ def likePost(request,id):
         post = Post.objects.get(id=postid)
         post.likes.add(request.user)
         return redirect("/")
-    
+
+def search(request):
+    sterm = request.GET('search')
+
+    if search == None :
+        return redirect('/')
+    else:
+        user = Profilemodel.objects.filter(user__username__icontains=sterm)
+
+
+        return render(request,'search.html')
