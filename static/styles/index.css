@@ -352,6 +352,9 @@
   height: 10%;
   width: 30%;
  }
+ .comment_button {
+    border: none;
+ }
   @media (max-width: 768px) {
     .sidebar {
       display: none;

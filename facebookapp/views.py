@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,auth
-from .models import Profilemodel,Post
+from .models import Profilemodel,Post,comment
 from django.contrib.auth import login ,authenticate
 # Create your views here.
 
@@ -142,15 +142,15 @@ def likePost(request,id):
 def search(request):
     if request.method == 'GET':
         search = request.GET['search1']
-        
-        
+
+
         user = Profilemodel.objects.filter(user__username__icontains=search)
-        
+
         return render(request,'search.html',{'all':user})
     else :
         return redirect('/')
-    
-    
+
+
 def follow(request):
     if request.method == 'POST':
        
@@ -168,3 +168,28 @@ def follow(request):
     else :
         
         return redirect("friends")
+    
+def comments(request,id):
+    print(request.method,id)
+    if request.method == 'POST':
+        postid = id
+        post = Post.objects.get(id= postid)
+        posts = Post.objects.filter(id=postid)
+        print(posts)
+        comments = comment.objects.filter(post=id)
+        
+        print(comments)
+        return render(request, 'comments.html',{'posts':post,'comments':comments})
+
+
+def postComment(request):
+    if request.method == "POST":
+        comments=request.POST.get('comment')
+       
+        postid =request.POST.get('postid')
+        print(postid)
+        post= Post.objects.get(id=postid)
+        
+       
+        comments=comment.objects.create(comment= comments, user=request.user, post=post)
+        return redirect('/')

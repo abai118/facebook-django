@@ -1,5 +1,7 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
+
 
 
 
@@ -22,3 +24,13 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now_add=True, blank=True)
 
+class comment(models.Model):
+   
+    comment = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # parent =models.ForeignKey('self',on_delete=models.CASCADE, null=True)
+    time = models.DateTimeField(auto_now_add=True, blank=True)
+    
+    
+    
