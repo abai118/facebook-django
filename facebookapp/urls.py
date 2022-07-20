@@ -8,6 +8,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('login',views.login1,name='login'),
     path('logout',views.logout,name='logout'),
+    path('comments/logout',views.logout,name='logout'),
     path('register',views.register,name='register'),
     path('profile',views.profile,name='profile'),
     path('updateProfile',views.updateProfile,name='updateProfile'),
@@ -17,7 +18,7 @@ urlpatterns = [
     path('search',views.search,name='search'),
     path('follow',views.follow,name='follow'),
     path('comments/<int:id>',views.comments,name='comments'),
-    path('postComment',views.postComment,name='postComment'),
+    path('comments/postComment',views.postComment,name='postComment'),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
