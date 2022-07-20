@@ -10,8 +10,8 @@ def index(request):
     if request.user.is_authenticated:
         posts = Post.objects.filter(profileuser__followers=request.user)
         profile = Profilemodel.objects.get(user=request.user)
-        friends = [profile.followers]
-        # print(friends)
+        friends = profile.followers.all()
+        print(friends)
         # print(profile)
        
         return render(request, 'index.html',{'posts':posts,'friends':friends})
@@ -27,7 +27,7 @@ def login1(request):
         # print(username)
         if user is not None:
             auth.login(request,user)
-            print("ok")
+            
             return redirect('/')
         else :
             messages.info(request,"invalid credentials")
@@ -91,8 +91,10 @@ def updateProfile(request):
 def profile(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
+        friends = profile.followers.all()
         posts = Post.objects.filter(profileuser=profile).order_by('-time')
-        friends = profile.followers
+        
+        
 
         return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
@@ -102,8 +104,7 @@ def profile(request):
 def friends(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
-        print(profile)
-        friends = [profile.followers]
+        friends = profile.followers.all()
         all=Profilemodel.objects.all()
         print(friends,"ok")
         # print(all)
