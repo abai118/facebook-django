@@ -201,14 +201,14 @@
                                 <div class="form-group">
                                     <label for="comment">Post a reply </label>
                                     <input type="text" class="form-control" name="comment" placeholder="Enter comment here">
-                                    <input type="hidden" name="parentSno" value="{{comment.sno}}">
+                                    <input type="hidden" name="parentid" value="{{comment.id}}">
                                 </div>
-                                <input type="hidden" name="postSno" value="{{post.sno}}">
+                                <input type="hidden" name="postSno" value="{{posts.id}}">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>
-        
+            {% comment %}  {% for reply in replyDict %} {% endcomment %} 
                     <div class="replies bg-danger my-2 ">
                   
                     {{reply}}

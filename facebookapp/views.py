@@ -102,9 +102,10 @@ def profile(request):
 def friends(request):
     if request.user.is_authenticated:
         profile = Profilemodel.objects.get(user=request.user)
+        print(profile)
         friends = [profile.followers]
         all=Profilemodel.objects.all()
-        # print(friends,"ok")
+        print(friends,"ok")
         # print(all)
         return render(request, 'friends.html',{'friends' : friends, 'all':all})
     else :
@@ -192,4 +193,12 @@ def postComment(request):
         
        
         comments=comment.objects.create(comment= comments, user=request.user, post=post)
+        # if parentid=="":
+            # comments=comment.objects.create(comment= comments, user=request.user, post=post
+        # else:
+        #     parent= comment.objects.get(id=parent)
+        #     comments=comment.objects.create(comment= comment, user=user, post=post , parent=parent)
+        
         return redirect('/')
+            
+        
