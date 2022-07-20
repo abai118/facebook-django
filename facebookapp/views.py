@@ -176,7 +176,7 @@ def comments(request,id):
         post = Post.objects.get(id= postid)
         posts = Post.objects.filter(id=postid)
         print(posts)
-        comments = comment.objects.filter(post=id)
+        comments = comment.objects.filter(post=id).order_by[-'time']
         
         print(comments)
         return render(request, 'comments.html',{'posts':post,'comments':comments})

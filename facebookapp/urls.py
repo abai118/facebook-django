@@ -17,7 +17,7 @@ urlpatterns = [
     path('search',views.search,name='search'),
     path('follow',views.follow,name='follow'),
     path('comments/<int:id>',views.comments,name='comments'),
-    path('blog/postComment',views.postComment,name='postComment'),
+    path('postComment',views.postComment,name='postComment'),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
