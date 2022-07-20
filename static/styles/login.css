@@ -66,3 +66,13 @@ img {
     height: 15%;
     margin: left;
 }
+
+
+@media (max-width: 768px) {
+.facebooktext {
+    display: none;
+}
+button {
+    font-size: small;
+}
+}
