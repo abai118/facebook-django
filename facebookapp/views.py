@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,auth
-from .models import Profilemodel,Post,comment
 from django.contrib.auth import login ,authenticate
-from django.template import RequestContext
+from .models import Profilemodel,Post,comment
+
+
 # Create your views here.
 
 
@@ -14,7 +15,7 @@ def index(request):
         friends = profile.followers.all()
         # print(friends)
         # print(profile)
-       
+
         return render(request, 'index.html',{'posts':posts,'friends':friends})
     else :
         return redirect('login')
@@ -28,7 +29,7 @@ def login1(request):
         # print(username)
         if user is not None:
             auth.login(request,user)
-            
+
             return redirect('/')
         else :
             messages.info(request,"invalid credentials")
@@ -80,7 +81,7 @@ def updateProfile(request):
             bio = request.POST['bio']
             profilepic = request.FILES['profilepic']
             nickname = request.POST['nickname']
-            profile = Profilemodel.objects.create(user=request.user,image=profilepic,bio=bio,nickname=nickname)
+            profiles = Profilemodel.objects.create(user=request.user,image=profilepic,bio=bio,nickname=nickname)
             return redirect('profile')
         else:
             return render(request,'profileUpload.html')
@@ -94,8 +95,8 @@ def profile(request):
         profile = Profilemodel.objects.get(user=request.user)
         friends = profile.followers.all()
         posts = Post.objects.filter(profileuser=profile).order_by('-time')
-        
-        
+
+
 
         return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
@@ -124,7 +125,6 @@ def updatePost(request):
             file = request.FILES['image']
             # print(file)
             posts = Post.objects.create(postImg=file,profileuser=profile,user=request.user,text=postdesc)
-
             return render(request,'profile.html')
         else:
             messages.info(request, "something went wrong")
@@ -155,22 +155,22 @@ def search(request):
 
 def follow(request):
     if request.method == 'POST':
-       
+
         userfollow = request.POST['user']
         user = User.objects.get(username=userfollow)
         activeuser = User.objects.get(username=request.user)
         followingmodel = Profilemodel.objects.get(user=activeuser)
-        
+
         followmodel = Profilemodel.objects.get(user=user)
-        
+
         followingmodel.following.add(user)
         followmodel.followers.add(request.user)
-        
+
         return redirect('friends')
     else :
-        
+
         return redirect("friends")
-    
+
 def comments(request,id):
     print(request.method,id)
     if request.method == 'POST':
@@ -179,7 +179,7 @@ def comments(request,id):
         posts = Post.objects.filter(id=postid)
         # print(posts)
         comments = comment.objects.filter(post=id).order_by('-time')
-        
+
         # print(comments)
         return render(request, 'comments.html',{'posts':post,'comments':comments})
 
@@ -187,21 +187,21 @@ def comments(request,id):
 def postComment(request):
     if request.method == "POST":
         comments=request.POST.get('comment')
-       
+
         postid =request.POST.get('postid')
         # print(postid)
         post= Post.objects.get(id=postid)
-        
-       
+
+
         comments=comment.objects.create(comment= comments, user=request.user, post=post)
         # if parentid=="":
             # comments=comment.objects.create(comment= comments, user=request.user, post=post
         # else:
         #     parent= comment.objects.get(id=parent)
         #     comments=comment.objects.create(comment= comment, user=user, post=post , parent=parent)
-        
+
         return redirect('/')
-            
-        
+
+
 def notfound(request,exception):
-    return render(request, 'error.html') 
+    return render(request, 'error.html')

@@ -22,4 +22,3 @@ urlpatterns = [
 ]
 
 handler404 = 'facebookapp.views.notfound'
-

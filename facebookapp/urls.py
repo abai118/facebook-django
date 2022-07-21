@@ -1,8 +1,8 @@
-from cgitb import handler
 from django.urls import path
-from facebookapp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from facebookapp import views
+
 
 
 urlpatterns = [
@@ -26,4 +26,3 @@ urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MED
 
 
 handler404 = 'facebookapp.views.notfound'
-
