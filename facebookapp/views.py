@@ -166,7 +166,7 @@ def follow(request):
         followingmodel.following.add(user)
         followmodel.followers.add(request.user)
         
-        return redirect('/')
+        return redirect('friends')
     else :
         
         return redirect("friends")
