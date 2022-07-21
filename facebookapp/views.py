@@ -96,7 +96,7 @@ def profile(request):
         friends = profile.followers.all()
         posts = Post.objects.filter(profileuser=profile).order_by('-time')
 
-
+        print(profile)
 
         return render(request,'profile.html',{'profiles': profile,'posts':posts,'friends':friends})
     else :
