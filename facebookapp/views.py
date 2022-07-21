@@ -11,7 +11,7 @@ def index(request):
         posts = Post.objects.filter(profileuser__followers=request.user)
         profile = Profilemodel.objects.get(user=request.user)
         friends = profile.followers.all()
-        print(friends)
+        # print(friends)
         # print(profile)
        
         return render(request, 'index.html',{'posts':posts,'friends':friends})
@@ -106,7 +106,7 @@ def friends(request):
         profile = Profilemodel.objects.get(user=request.user)
         friends = profile.followers.all()
         all=Profilemodel.objects.all()
-        print(friends,"ok")
+        # print(friends,"ok")
         # print(all)
         return render(request, 'friends.html',{'friends' : friends, 'all':all})
     else :
@@ -177,10 +177,10 @@ def comments(request,id):
         postid = id
         post = Post.objects.get(id= postid)
         posts = Post.objects.filter(id=postid)
-        print(posts)
+        # print(posts)
         comments = comment.objects.filter(post=id).order_by('-time')
         
-        print(comments)
+        # print(comments)
         return render(request, 'comments.html',{'posts':post,'comments':comments})
 
 
@@ -189,7 +189,7 @@ def postComment(request):
         comments=request.POST.get('comment')
        
         postid =request.POST.get('postid')
-        print(postid)
+        # print(postid)
         post= Post.objects.get(id=postid)
         
        
