@@ -21,6 +21,5 @@ urlpatterns = [
     path('',include('facebookapp.urls'))
 ]
 
-handler404 = 'facebookapp.views.handler404'
-handler500 = 'facebookapp.views.handler500'
+handler404 = 'facebookapp.views.notfound'
 
