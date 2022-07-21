@@ -26,3 +26,4 @@ urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MED
 
 
 handler404 = 'facebookapp.views.notfound'
+handler500 = 'facebookapp.views.notfound'
