@@ -204,4 +204,4 @@ def postComment(request):
 
 
 def notfound(request,exception):
-    return render(request, 'error.html')
+    return render(request, 'error.html') 
