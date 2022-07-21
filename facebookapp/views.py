@@ -112,8 +112,7 @@ def friends(request):
     else :
         return redirect('login')
 
-def notfound(request):
-    return render(request, 'index.html')
+
 
 
 def updatePost(request):
@@ -203,3 +202,5 @@ def postComment(request):
         return redirect('/')
             
         
+def notfound(request,exception):
+    return render(request, 'error.html') 
